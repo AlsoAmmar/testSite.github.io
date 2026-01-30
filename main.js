@@ -3,9 +3,6 @@ import { dotnet } from './_framework/dotnet.js'
 const is_browser = typeof window != "undefined";
 if (!is_browser) throw new Error(`Expected to be running in a browser`);
 
-// ---- LOADING TEXT ANIMATION ----
-const loadingEl = document.querySelector(".loading");
-
 const dotnetRuntime = await dotnet
     .withDiagnosticTracing(false)
     .withApplicationArgumentsFromQuery()
@@ -14,4 +11,5 @@ const dotnetRuntime = await dotnet
 const config = dotnetRuntime.getConfig();
 
 await dotnetRuntime.runMain(config.mainAssemblyName, [globalThis.location.href]);
+
 
